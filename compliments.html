@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+  <title>Документ</title>
+</head>
+<style>
+  body{
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  p{
+    text-decoration: underline overline;
+    text-align: center ;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  }
+  input{
+    border-radius: 10px;
+    text-align: center ;
+    height: 30px;
+    background-color:#fff ;
+    margin-bottom: 10px;
+  }
+  .field__form__btn {
+    background-color: #333;
+    border-color: 2px black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.result__check__label{
+ font-size: 20px;
+ font-family: 'Roboto', sans-serif;
+ color: #333;
+}
+</style>
+<body>
+  <div class="container">
+    <p>Скільки компліментів ви хочете?</p>
+    <input type="text" class="field__form__input" onkeypress='validate(event)'/>
+    <button class="field__form__btn">Ок</button>
+    <span class="result__check__label"><br>результат:</span>
+  </div>
+
+  <script>
+    let input = document.querySelector(".field__form__input");
+    let btn = document.querySelector(".field__form__btn");
+    let result = document.querySelector(".result__check__label");
+
+    btn.onclick = function (evt) {
+    evt.preventDefault();
+    setCompliment()    
+    }
+    
+    function setCompliment() {
+    let compliments = ["смішний","чудова людина","розумний","геній","розсудливий","щедрий","гарний","добрий"];
+    let animal = ["сонечко","метелик","кіт","собака","качка","курка","ведмідь"];
+    let number = input.value
+    let emodjiString = ["0x1F41E", "0x1F98B","0x1F63A","0x1F415","0x1F986","0x1F423","0x1F43B"];
+    let string = ""
+
+    for(let i = 1; i <= number; i++){
+      let animalRandom = Math.floor(Math.random() * animal.length)
+      let complimentsRandom = Math.floor(Math.random() * compliments.length)
+      let emoji = String.fromCodePoint(emodjiString[animalRandom])
+      string += ("<br>"+i+") ви такий "+ compliments[complimentsRandom] +" як "+ animal[animalRandom] + emoji)
+     
+    }
+    result.innerHTML = string
+    
+  }
+
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === 'paste') {
+          key = event.clipboardData.getData('text/plain');
+      } else {
+      // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+          key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]/;
+      if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+  
+    
+  </script>
+
+</body>
+</html>

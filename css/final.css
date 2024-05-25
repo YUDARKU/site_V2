@@ -1,0 +1,89 @@
+/* Use a local font instead of Google Fonts */
+body {
+  font-family: Arial, sans-serif; /* Fallback for non-supporting browsers */
+  background-image: url(); /* Remove the background image if not needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+/* Create a container for main content */
+.container {
+  width: 80%;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px;
+}
+
+/* Header with a subtle gradient */
+header {
+  height: 100px;
+  background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+  text-align: center;
+}
+
+/* Text with a drop shadow */
+h1, h2, p {
+  color: #333;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation bar with rounded corners and slight border */
+nav {
+  display: flex; /* Make navigation elements horizontal */
+  justify-content: space-between; /* Space elements evenly */
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style for all navigation links (default) */
+nav a {
+  color: #333;
+  text-decoration: none; /* Remove underline */
+  padding: 5px 10px;
+}
+
+/* Style for the active navigation link (highlighted) */
+nav a.active {
+  background: #f0f0f0; /* Highlight background */
+  font-weight: bold; /* Make text bolder */
+}
+
+/* Sections for content with subtle separation */
+section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Buttons with hover effect */
+button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+/* Responsive media queries */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  nav {
+    flex-direction: column; /* Stack navigation elements vertically on small screens */
+    align-items: center;
+  }
+  nav a {
+    margin-bottom: 10px;
+  }
+}

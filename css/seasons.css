@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/points.css"> 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            text-align: center;
+            font-size: 35px;
+            color: rgb(0, 0, 0);
+            margin-top: 150px;
+            text-shadow: 0px 0px 10px #317af0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .grade {
+            width: 50px;
+            height: 50px;
+            font-size: 36px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 40px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        button {
+            height: 50px;
+            margin: 5px;
+            width: 120px;
+            background: #333;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+            font-family: Consolas, Courier New, monospace;
+            border: solid #404c5d 1px;
+            font-size: 16px;
+            color: rgb(161, 161, 161);
+            transition: 500ms;
+            border-radius: 5px;
+            background: linear-gradient(145deg, #2e2d2d, #212121);
+            box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+                inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+        }
+        button:hover {
+            box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+            color: #d6d6d6;
+            transition: 500ms;
+        }
+        button:active {
+            box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+            color: #d6d6d6;
+            transition: 100ms;
+        }
+    </style>
+    <title>Points</title>
+</head>
+<body>
+    <script>
+        function grades(){
+            let grade = +document.grade_level.a.value;
+            let answer = document.getElementById("level");
+            let string;
+            switch(grade){
+                case 1:
+                case 2:
+                case 3:
+                    string = 'Низький';
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    string = 'Середній';
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    string = 'Задовільний';
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    string = 'Високий';
+                    break;
+                default:
+                    string = 'Такої оцінки не існує.';
+            }
+            answer.innerHTML = string;
+        }
+    </script>
+    <div class="container">
+        <h1>Дізнайся, як мама назве твої оцінки</h1>
+        <form name="grade_level" action="javascript:grades()">
+            Введіть свій бал: <input class="grade" name="a" type="text" value="" size="4"><br>
+            <button>Відповідь</button>
+        </form>
+        Твоя мама скаже, що це рівень: <span id="level"></span><br/>
+        <img src="шлях_до_вашого_зображення.jpg" alt="Графіка">
+    </div>
+</body>
+</html>

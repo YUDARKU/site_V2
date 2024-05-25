@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000;
+      padding: 20px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="desc__title">"Еко Банк"</h1>
+    <p class="desc__subtitle">
+      Ви можете зняти суму кратну 10
+    </p>
+    <label for="" class="filed__form__label">Ваша сумма: </label>
+    <input type="text" class="field__form__input" onkeypress='validate(event)'/>
+    <button class="field__form__btn">зняти</button>
+    <div class="result__check">
+      <span class="result__check__label">Результат:</span>
+    </div>
+  </div>
+  
+  <script>
+    let input = document.querySelector(".field__form__input");
+    let btn = document.querySelector(".field__form__btn");
+    let result = document.querySelector(".result__check__label");
+    let money 
+
+    btn.onclick = function (evt) {
+    evt.preventDefault();
+    money = parseInt(input.value)
+    atmControl();
+    }
+    
+      function atmControl(){
+        let ostacha = money % 10
+
+        if(ostacha == 0){
+          checkLimitMoney()
+        }else{
+          result.textContent =" ви не можете зняти цю суму. ви можете зняти сумму кратну тільки 10"
+        }
+      }
+
+      function checkLimitMoney(){
+        if( money >= 50 && money <= 3000){
+         result.textContent = (`візьміть свої кошти у суммі ${money}`)
+        }else{
+          result.textContent = "на жаль, ви можете зняти гроші на суму від 50грн до 3000грн."
+        }
+      }
+      
+      function validate(evt) {
+      var theEvent = evt || window.event;
+
+      if (theEvent.type === 'paste') {
+          key = event.clipboardData.getData('text/plain');
+      } else {
+          var key = theEvent.keyCode || theEvent.which;
+          key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]/;
+      if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+  </script>
+</body>
+</html>
